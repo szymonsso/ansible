@@ -1,0 +1,6 @@
+- name: "Kasowanie {{ software }} przez chocolatey"
+  win_chocolatey:
+    name: "{{ software }}"
+    state: absent
+  loop_control:
+    label: "{{ software }}"

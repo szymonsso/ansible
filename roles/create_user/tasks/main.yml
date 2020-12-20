@@ -1,0 +1,13 @@
+---
+- name: "Dodanie użytkownika {{ user_name }}"
+  win_user:
+    name: "{{ user_name }}"
+    fullname: "{{ user_fullname }}"
+    password: "test123"
+    password_never_expires: "{{ user_pass_expiry }}"
+    update_password: on_create
+    state: present
+    groups:
+      - "Użytkownicy"
+      - "Operatorzy konfiguracji sieci"
+  ignore_errors: yes

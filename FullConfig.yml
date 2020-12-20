@@ -1,0 +1,6 @@
+- hosts: azure
+  roles:
+      - ping
+      - { role: create_user, user_name: test, user_fullname: "Test", user_pass_expiry: False }
+#      - { role: choco_install, software: notepadplusplus}
+#      - { role: choco_install, software: firefox }
