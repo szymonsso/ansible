@@ -1,5 +1,6 @@
 ---
-- hosts: laptopy azure
+# To jest komentarz
+- hosts: all
   tasks:
     - debug: msg="Ansible is working"
 
