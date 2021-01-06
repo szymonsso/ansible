@@ -8,4 +8,6 @@ ansible_password: !vault |
           3837
 ansible_connection: winrm
 ansible_port: 5986
+ansible_winrm_server_cert_validation: ignore
+
 

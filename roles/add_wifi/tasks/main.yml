@@ -1,0 +1,14 @@
+
+- name: "Skopiowanie profilu sieci WiFi"
+  win_copy: 
+    src: /etc/ansible/roles/add_wifi/tasks/InternetBezprzewodowy.xml
+    dest: c:\Users\winuser\Downloads\
+
+- name: "Wgrywam profil InternetBezprzewodowy"
+  win_command: 'netsh wlan add profile c:\Users\winuser\Downloads\InternetBezprzewodowy.xml'
+
+- name:	"Kasuje	plik z konfiguracją"
+  win_file:
+    path: c:\Users\winuser\Downloads\InternetBezprzewodowy.xml
+    state: absent
+    

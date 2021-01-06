@@ -1,0 +1,16 @@
+---
+- hosts: windows
+  gather_facts: yes
+#(jeśli chcemy aby aktualizacje działy się na każdym hoście po kolei)  serial: 1
+  tasks:
+    - name: Instalacja kluczowych aktualizacji windows
+      win_updates:
+        category_names:
+          - CriticalUpdates
+          - SecurityUpdates
+    register: update_result
+    - name: Sprawdzam czy potrzebny jest restart systemu po aktualizacjach
+      win_reboot:
+        shutdown_timeout_sec: 2700
+        msg: "System zostanie ponownie uruchomiony za 45 minut z powodu instalacji aktualizacji. Proszę zapisać pracę do tego czasu."
+      when: update_result.reboot_required

@@ -11,3 +11,4 @@
       - "Użytkownicy"
       - "Operatorzy konfiguracji sieci"
   ignore_errors: yes
+...
