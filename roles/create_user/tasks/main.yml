@@ -3,12 +3,47 @@
   win_user:
     name: "{{ user_name }}"
     fullname: "{{ user_fullname }}"
-    password: "test123"
-    password_never_expires: "{{ user_pass_expiry }}"
+    password:
+    password_never_expires: no
     update_password: on_create
+    user_cannot_change_password: no
     state: present
     groups:
-      - "Użytkownicy"
-      - "Operatorzy konfiguracji sieci"
+      - "Users"
+      - "Remote Desktop Users"
   ignore_errors: yes
+- name: 'Zmiana w rejestrze - "Ten komputer" domyślnie po otworzeniu eksploratora plików'
+  win_regedit:
+    path: HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+    name: LaunchTo
+    data: 2 #1 dla Ten Komputer, a 2 dla Szybki Dostęp(domyślna opcja)
+    type: dword
+
+- name: Zmiana w rejestrze - wyłączenie Cortany
+  win_regedit:
+    path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsSearch
+    name: AllowCortana
+    data: 1 #0 dla wyłączenia, 1 dla włączenia Cortany(domyślna opcja)
+    type: dword
+
+- name: Kopiuję skrypt ConfigureRemotingForAnsible.ps1 na dysk 
+  win_copy:
+    src: \etc\ansible\create_user\tasks\ConfigureRemotingForAnsible.ps1
+    dest: C:\ConfigureRemotingForAnsible.ps1
+- name: Dodanie codziennej konfiguracji WinRM do automatycznych zadań windows
+  win_scheduled_task:
+    name: ConfigureRemotingForAnsible
+    description: Run ConfigureRemotingForAnsible.ps1
+    start_when_available: yes
+    multiple_instances: 2
+    enabled: yes
+    actions:
+    - path: powershell.exe
+      working_directory: C:\
+      arguments: -ExecutionPolicy Bypass -File "C:\ConfigureRemotingForAnsible.ps1" -CertValidityDays 3650 -EnableCredSSP -ForceNewSSLCert
+    triggers:
+    - type: boot
+    - type: daily
+      start_boundary: '2021-01-01T09:00:00'
+    username: NT AUTHORITY\SYSTEM
 ...

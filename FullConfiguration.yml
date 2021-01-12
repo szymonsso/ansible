@@ -1,0 +1,20 @@
+---
+- hosts: host1
+  roles:
+      - ping
+      - msi_install
+#      - win_update
+#      - { role: create_user, user_name: test3, user_fullname: "Test3", user_pass_expiry: False }
+#      - { role: choco_install, software: notepadplusplus}
+#      - { role: choco_install, software: openvpn }
+#      - { role: choco_install, software: adobereader }
+#      - { role: choco_install, software: windirstat }
+#      - { role: choco_install, software: keepass }
+#      - add_wifi
+#- import_playbook: RegEdit.yml 
+
+
+...
+
+
+#      - { role: msi_install, url_adress: 'http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe', product_id: '{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}' }

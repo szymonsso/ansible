@@ -1,0 +1,19 @@
+---
+- hosts: wirtualne
+  tasks:
+  - name: Usuwanie oprogramowania przez chocolatey
+    win_chocolatey:
+      name: all #'{{ item }}'
+      state: absent
+    # with_items:
+    # - adobereader
+    # - notepadplusplus
+    # - windirstat
+    # - openvpn
+    # - keepass
+
+    ignore_errors: yes
+    register: log
+
+  - name: Lista odinstalowanych aplikacji
+    debug: var=log.stdout_lines

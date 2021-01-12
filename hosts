@@ -1,11 +1,21 @@
 [windows:children]
 laptopy
 azure
+wirtualne
 
 [laptopy]
-szymi
-#192.168.8.101
-#192.168.8.112
+Lenovo ansible_host=192.168.8.100
+Dell ansible_host=192.168.8.110
 
 [azure]
-win10-1 ansible_host=13.80.116.62
+win10-1vm ansible_host=13.80.116.62
+win10-2vm ansible_host=104.214.228.149
+win10-3vm ansible_host=40.114.249.141
+
+[wirtualne]
+host1 ansible_host=192.168.8.121
+host2 ansible_host=192.168.8.122
+host3 ansible_host=192.168.8.123
+
+
+

@@ -1,0 +1,7 @@
+---
+- name: "Usuwanie użytkownika {{ user_name }}"
+  win_user:
+    name: "{{ user_name }}"
+    state: absent
+  ignore_errors: yes
+...

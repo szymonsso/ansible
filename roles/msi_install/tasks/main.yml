@@ -1,29 +1,29 @@
 ---
 - name: Włączenie możliwości instalowania aplikacji innych firm
-  ansible.windows.win_regedit:
+  win_regedit:
     path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock
     name: AllowAllTrustedApps
     data: 1
     type: dword
     state: present
 
-- name: Pobieranie i instalacja programu spoza repozytorium 
-  hosts: all 
-  tasks:
-    - name: "{{ msi_name }}"
-      win_get_url:
-        url: "{{ url_adress }}"
-        dest: 'C:\Users\winuser\Downloads\MSI_to_install.msi'
+- name: "Pobieranie i instalacja 7zip"
+  win_get_url:
+    url: https://www.7-zip.org/a/7z1900.msi
+    dest: c:\Users\winuser\Desktop\7zip.msi
 
-    - name: Instalacja programu
-      win_package: 
-        path: 'C:\Users\winuser\Downloads\MSI_to_install.msi'
-        state: present
+- name: "Uruchomienie instalatora"
+  win_package:
+    path: c:\Users\winuser\Desktop\7zip.msi
+    state: present # dla deinstalacji parametr: absent
+
+  
+
+# - name: Pobieranie i instalacja programu spoza repozytorium 
+#   win_package:
+#     path: "{{ url_adress }}"
+#     product_id: "{{ product_id }}"
+#     state: present
 
 
-#- name: "Pobieranie i instalacja programu msi"
-#  win_copy:
-#    src: /etc/ansible/files/installers/ESMC_Installer_x64_pl_PL_8.0.exe
-#    dest: c:\Users\admin\Desktop\ESMC_Installer_x64_pl_PL_8.0.exe
-#- name: "Uruchomienie instalatora"
-#  raw: 'c:\Users\admin\Desktop\ESMC_Installer_x64_pl_PL_8.0.exe --silent --accepteula'
+

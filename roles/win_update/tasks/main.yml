@@ -1,24 +1,33 @@
 ---
-- hosts: laptopy
-#  gather_facts: yes
-#(jeśli chcemy aby aktualizacje działy się na każdym hoście po kolei opcja serial musi być aktywna)
-#  serial: 1
-  tasks:
-
+- name: NoAutoUpdate
+  win_regedit:
+    path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
+    name: NoAutoUpdate
+    data: 1
+    type: dword
+    state: present
+      
+- name: Instalacja aktualizacji systemowych
+  block:  
   - name: Instalacja kluczowych aktualizacji windows
     win_updates:
       category_names:
         - CriticalUpdates
         - SecurityUpdates
     register: update_result
+  ##- name: co zostało zainstalowane
+  #  debug:
+  #    msg: "{{ update_result.msg }}"
   - name: Sprawdzam czy potrzebny jest restart systemu po aktualizacjach
     win_reboot:
       shutdown_timeout_sec: 2700
       msg: "System zostanie ponownie uruchomiony za 45 minut z powodu instalacji aktualizacji. Proszę zapisać pracę do tego czasu."
     when: update_result.reboot_required
 
-  - name: Powiadomienie dla zalogowanych użytkowników o restarcie
-    win_msg:
-      display_seconds: 2000
-      msg: "System zostanie ponownie uruchomiony za 45 minut z powodu instalacji aktualizacji. Proszę zapisać pracę do tego czasu."
-    when: update_result.reboot_required
+  always:
+    - name: Report results
+      debug:
+        var: update_results
+      tags:
+      - install
+      - check

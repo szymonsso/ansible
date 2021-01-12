@@ -1,0 +1,7 @@
+---
+- name: "Ping w10 Pro"
+  win_ping:
+#  when:
+#    - ansible_distribution == "Microsoft Windows 10 Pro"
+  ignore_errors: yes
+

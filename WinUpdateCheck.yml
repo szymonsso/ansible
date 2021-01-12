@@ -1,0 +1,19 @@
+- hosts: szymi
+  tasks:
+  - name: Warn logged in users of impending upgrade
+    win_msg:
+      display_seconds: 6000
+      msg: Automated upgrade about to start.
+  - name: Sprawdzam czy są aktualizacje systemu Windows
+    win_updates:
+      msg: "elo mordo"
+      category_names:
+          - CriticalUpdates
+          - SecurityUpdates
+      state: searched
+    register: updatelog
+      
+    ignore_errors: yes
+
+  - name: Lista aktualizacji
+    debug: var=updatelog

@@ -5,3 +5,4 @@
     state: latest
   loop_control:
     label: "{{ software }}"
+  ignore_errors: yes

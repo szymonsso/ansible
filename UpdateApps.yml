@@ -1,0 +1,6 @@
+- hosts: windows
+  tasks:
+  - name: Aktualizacja zainstalowanego oprogramowania
+      win_chocolatey:
+        name: all
+        state: latest

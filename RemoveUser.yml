@@ -1,0 +1,6 @@
+---
+- hosts: wirtualne
+  roles:
+      - ping
+      - { role: remove_user, user_name: IEUser }
+...

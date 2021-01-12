@@ -1,7 +1,8 @@
 
 - name: "Skopiowanie profilu sieci WiFi"
   win_copy: 
-    src: /etc/ansible/roles/add_wifi/tasks/InternetBezprzewodowy.xml
+#    src: /etc/ansible/roles/add_wifi/tasks/InternetBezprzewodowy.xml
+    src: /etc/ansible/wifi_config/InternetBezprzewodowy.xml
     dest: c:\Users\winuser\Downloads\
 
 - name: "Wgrywam profil InternetBezprzewodowy"
