@@ -4,8 +4,9 @@ azure
 wirtualne
 
 [laptopy]
-Lenovo ansible_host=192.168.8.100
-Dell ansible_host=192.168.8.110
+lenovo ansible_host=192.168.8.100
+dell ansible_host=192.168.8.110
+dell6430
 
 [azure]
 win10-1vm ansible_host=13.80.116.62

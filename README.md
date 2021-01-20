@@ -6,3 +6,6 @@ https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemoting
 Hasło do użytkownika z uprawnieniami administratorskimi - winuser - jest zaszyfrowane, przy wywoływaniu polecenia należy dodać opcję --vault-id vault_secret 
 np. ansible -m win_ping -i hosts laptopy --vault-id vault_secret
 
+
+
+

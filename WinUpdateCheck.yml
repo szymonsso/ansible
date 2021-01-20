@@ -1,12 +1,7 @@
-- hosts: szymi
+- hosts: lenovo
   tasks:
-  - name: Warn logged in users of impending upgrade
-    win_msg:
-      display_seconds: 6000
-      msg: Automated upgrade about to start.
   - name: Sprawdzam czy są aktualizacje systemu Windows
     win_updates:
-      msg: "elo mordo"
       category_names:
           - CriticalUpdates
           - SecurityUpdates
@@ -16,4 +11,4 @@
     ignore_errors: yes
 
   - name: Lista aktualizacji
-    debug: var=updatelog
+    debug: var=updatelog.found_update_count

@@ -1,4 +1,5 @@
 ansible_user: winuser
+#ansible_password: "{{ winuser_password }}"
 ansible_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           66316264383832343065643739316161623563316261323930356530623365663136383362663739
@@ -9,5 +10,4 @@ ansible_password: !vault |
 ansible_connection: winrm
 ansible_port: 5986
 ansible_winrm_server_cert_validation: ignore
-
 
