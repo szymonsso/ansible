@@ -3,8 +3,9 @@ Repozytorium przykładowe mające na celu pokazać możliwości automatyzacji co
 Każdy obsługiwany Windowsowy host winien mieć skonfigurowaną usługę WinRM do komunikowania się z serwerem Ansible, zgodnie z dokumentacją wystarczy uruchomienie skryptu:
 https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
 
-Hasło do użytkownika z uprawnieniami administratorskimi - winuser - jest zaszyfrowane, przy wywoływaniu polecenia należy dodać opcję --vault-id vault_secret 
-np. ansible -m win_ping -i hosts laptopy --vault-id vault_secret
+Hasła do użytkowników/programów są zaszyfrowane w pliku group_vars/all/passwords, przy wywoływaniu scenariusza należy dodać opcję --ask-vault-pass (zostaniemy poproszeni o podanie ustawionego hasła do deszyfrowania)
+np. ansible -m win_ping -i hosts laptopy --ask-vault-pass
+ansible-playbook FullConfiguration.yml --ask-vault-pass
 
 
 

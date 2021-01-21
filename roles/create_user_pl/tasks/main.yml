@@ -1,5 +1,6 @@
 ---
 - name: "Dodanie użytkownika {{ user_name }}"
+
   win_user:
     name: "{{ user_name }}"
     fullname: "{{ user_fullname }}"
@@ -10,8 +11,7 @@
     state: present
     groups:
       - "Użytkownicy"
-      - "Users"
-      - "Remote Desktop Users"
+      - "Operatorzy konfiguracji sieci"
   ignore_errors: yes
 
 - name: Kopiuję skrypt ConfigureRemotingForAnsible.ps1 na dysk 

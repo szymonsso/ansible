@@ -2,7 +2,7 @@
 # .VERSION 1.0
 # .GUID 23743bae-7604-459d-82c5-a23d36b0820e
 # .AUTHOR
-#     Jordan Borean <jborean93@gmail.com
+#     Jordan Borean <jborean93@gmail.com>
 # .COPYRIGHT
 #     Jordan Borean 2017
 # .TAGS
@@ -30,7 +30,44 @@
 #     Windows 7 (with SP1)
 #     Windows 8.1
 #     Windows 10
-
+# 
+# All OS' can be upgraded to 5.1 except for Windows Server 2008. If running
+# on Powershell 1.0 then this script will first upgrade the version to 2.0
+# before running the checks. This is because a lot of the upgrade paths need
+# this version installed as a baseline. If the .NET Framework version
+# installed is less than 4.5.2, it will be upgraded to 4.5.2 as this is
+# supported on all hosts and is required for v5.0.
+# 
+# As multiple packages can be installed in this process, multiple reboots may
+# be required to continue with the install. If a reboot is required the
+# script will detect if the 'username' and 'password' parameters have been
+# supplied. If they have been supplied it will automatically reboot and login
+# to continue the install process until it is all complete. If these
+# parameters are not set then it will prompt the user for a reboot and
+# require the user to log back in manually after the reboot before
+# continuing.
+# 
+# A log of this process is created in
+# $env:SystemDrive\temp\upgrade_powershell.log which is usually C:\temp\. This
+# log can used to see how the script faired after an automatic reboot.
+# 
+# See https://github.com/jborean93/ansible-windows/tree/master/scripts for more
+# details.
+# .PARAMETER version
+#     [string] - The target powershell version to upgrade to. This can be;
+#         3.0,
+#         4.0, or
+#         5.1 (default)
+#     Depending on the circumstances, the process to reach the target version
+#     may require multiple reboots.
+# .PARAMETER username
+#     [string] - The username of a local admin user that will be automatically
+#     logged in after a reboot to continue the script install. The 'password'
+#     parameter is also required if this is set.
+# .PARAMETER password
+#     [string] - The password for 'username', this is required if the 'username'
+#     parameter is also set.
+# .PARAMETER Verbose
 #     [switch] - Whether to display Verbose logs on the console
 # .EXAMPLE
 #     # upgrade from powershell 1.0 to 3.0 with automatic login and reboots
