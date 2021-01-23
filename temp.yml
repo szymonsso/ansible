@@ -1,8 +1,0 @@
----
-#To jest komentarz
-- name: Przykładowy Yaml
-  hosts: adres.serwera.pl
-  tasks:
-    - name: "Ping Windows"
-      win_ping:
-...

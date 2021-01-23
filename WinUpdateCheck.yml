@@ -1,3 +1,4 @@
+---
 - hosts: lenovo
   tasks:
   - name: Sprawdzam czy są aktualizacje systemu Windows
@@ -11,4 +12,5 @@
     ignore_errors: yes
 
   - name: Lista aktualizacji
-    debug: var=updatelog.found_update_count
+    debug: var=updatelog.updates 
+...

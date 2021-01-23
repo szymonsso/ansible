@@ -1,6 +1,8 @@
 ---
-- name: Restart usługi spooler
-  win_service:
-    name: spooler
-    state: restarted
+- hosts: wirtualne
+  tasks:
+  - name: Restart usługi spooler
+    win_service:
+      name: spooler
+      state: restarted
 ...

@@ -1,7 +1,7 @@
 ---
 - hosts: laptopy
 #  gather_facts: yes
-#(jeśli chcemy aby aktualizacje działy się na każdym hoście po kolei opcja serial musi być aktywna)
+#(jeśli chcemy aby aktualizacje działy się na każdym hoście po kolei opcja serial musi być aktywna z parametrem 1)
 #  serial: 1
   tasks:
 

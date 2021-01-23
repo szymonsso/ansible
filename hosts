@@ -6,7 +6,7 @@ wirtualne
 [laptopy]
 lenovo ansible_host=192.168.8.100
 dell ansible_host=192.168.8.110
-dell6430
+dell6420 ansible_host=192.168.8.116
 
 [azure]
 win10-1vm ansible_host=13.80.116.62

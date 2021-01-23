@@ -1,5 +1,5 @@
 ---
-- hosts: wirtualne
+- hosts: wirtualne azure
   tasks:
   - name: Usuwanie oprogramowania przez chocolatey
     win_chocolatey:
@@ -10,7 +10,7 @@
     # - notepadplusplus
     # - windirstat
     # - openvpn
-    # - keepass
+    # - firefox
 
     ignore_errors: yes
     register: log

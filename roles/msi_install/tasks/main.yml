@@ -17,13 +17,4 @@
     path: c:\Users\winuser\Desktop\7zip.msi
     state: present # dla deinstalacji parametr: absent
 
-  
-
-# - name: Pobieranie i instalacja programu spoza repozytorium 
-#   win_package:
-#     path: "{{ url_adress }}"
-#     product_id: "{{ product_id }}"
-#     state: present
-
-
 
