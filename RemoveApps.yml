@@ -1,5 +1,5 @@
 ---
-- hosts: wirtualne azure
+- hosts: host1
   tasks:
   - name: Usuwanie oprogramowania przez chocolatey
     win_chocolatey:
@@ -11,9 +11,8 @@
     # - windirstat
     # - openvpn
     # - firefox
-
-    ignore_errors: yes
     register: log
-
+    ignore_errors: yes
+    
   - name: Lista odinstalowanych aplikacji
-    debug: var=log.stdout_lines
+    debug: var=log

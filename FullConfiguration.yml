@@ -2,14 +2,14 @@
 - hosts: host1
   roles:
       - ping
-      - { role: create_user, user_name: test3, user_fullname: "Test 3" }
+      # - { role: create_user, user_name: test3, user_fullname: "Test 3" }
       # - { role: choco_install, software: notepadplusplus}
       # - { role: choco_install, software: openvpn }
       # - { role: choco_install, software: adobereader }
       # - { role: choco_install, software: windirstat }
       # - { role: choco_install, software: firefox }
-      # - add_wifi
+      - add_wifi
       # - win_update
-  import_playbook: tightvnc.yml
+  # import_playbook: tightvnc.yml
 ...
 

@@ -1,8 +1,7 @@
+---
 - name: "Instalacja {{ software }} przez chocolatey"
   win_chocolatey:
-    allow_empty_checksums: yes
     name: "{{ software }}"
     state: latest
-  loop_control:
-    label: "{{ software }}"
   ignore_errors: yes
+...

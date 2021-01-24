@@ -2,6 +2,4 @@
   win_chocolatey:
     name: "{{ software }}"
     state: absent
-  loop_control:
-    label: "{{ software }}"
   ignore_errors: yes
