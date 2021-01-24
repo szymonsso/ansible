@@ -28,6 +28,4 @@
     - name: Report results
       debug:
         var: update_results
-      tags:
-      - install
-      - check
+
