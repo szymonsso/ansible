@@ -5,4 +5,13 @@
     win_service:
       name: spooler
       state: restarted
+
+  - name: Wyłączenie usług Xbox
+    win_service: 
+      name:
+        - XblAuthManager
+        - XblGameSave
+        - XboxNetApiSvc
+      state: stopped
+
 ...

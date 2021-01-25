@@ -1,0 +1,27 @@
+---
+hosts: host1
+tasks:
+  - name: Włączenie możliwości instalowania aplikacji innych firm
+    win_regedit:
+      path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock
+      name: AllowAllTrustedApps
+      data: 1
+      type: dword
+      state: present
+
+  - name: Pobieranie programu
+    win_get_url:
+      url: https://www.antivirus.com/somepath/antivirus2000_licensed.msi
+      dest: c:\Users\winuser\Desktop\antivirus2000_licensed.msi
+
+  - name: Uruchomienie instalatora
+    win_package:
+      path: c:\Users\winuser\Desktop\antivirus_licensed.msi
+      arguments: '/q'
+      state: present
+
+# argumenty instalacji mogą się różnić jeśli chodzi o instalację msi/exe 
+# do każdego pliku instalacyjnego należy podejśc indywidualnie
+# poprawność scenariusza najepiej sprawdzić z argumentem --check
+# https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_package_module.html
+...

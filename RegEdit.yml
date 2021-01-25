@@ -9,18 +9,25 @@
       data: 1 #1 dla Ten Komputer, a 2 dla Szybki Dostęp
       type: dword
 
-  - name: Disable Cortana (Windows 10 Anniversary+)
+  - name: Wyłączenie Cortany z paska zadań
     win_regedit:
       path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsSearch
       name: AllowCortana
       data: 0 #0 dla wyłączenia, 1 dla włączenia Cortany
       type: dword
 
-  - name: NoAutoUpdate
+  - name: Wyłącz automatyczne aktualizacje Windows
     win_regedit:
       path: HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
       name: NoAutoUpdate
       data: 1
+      type: dword
+      state: present
+
+  - name: Włącz pokazywanie ukrytych plików systemowych  
+      path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      name: ShowSuperHidden
+      data: 2
       type: dword
       state: present
 ...

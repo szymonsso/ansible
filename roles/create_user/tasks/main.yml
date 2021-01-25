@@ -3,7 +3,7 @@
   win_user:
     name: "{{ user_name }}"
     fullname: "{{ user_fullname }}"
-    password:
+    password: 
     password_never_expires: no
     update_password: on_create
     user_cannot_change_password: no

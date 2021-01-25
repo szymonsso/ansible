@@ -1,0 +1,11 @@
+---
+- hosts: host1
+  tasks:
+  - name: Powiadomienie dla zalogowanych użytkowników o restarcie
+    win_msg:
+      display_seconds: 20
+      msg: "System zostanie ponownie uruchomiony za 30 sekund"
+
+  - name:  Restartuję system...
+    win_reboot:
+      pre_reboot_delay: 30

@@ -13,8 +13,8 @@
     register: update_result
   - name: Sprawdzam czy potrzebny jest restart systemu po aktualizacjach
     win_reboot:
-      shutdown_timeout_sec: 2700
-      msg: "System zostanie ponownie uruchomiony za 45 minut z powodu instalacji aktualizacji. Proszę zapisać pracę do tego czasu."
+      pre_reboot_delay: 2700
+      msg: "System zostanie ponownie uruchomiony za okolo 45 minut z powodu instalacji aktualizacji. Proszę zapisać pracę do tego czasu."
     when: update_result.reboot_required
 
   - name: Powiadomienie dla zalogowanych użytkowników o restarcie

@@ -7,9 +7,6 @@
         - CriticalUpdates
         - SecurityUpdates
     register: update_result
-  ##- name: co zostało zainstalowane
-  #  debug:
-  #    msg: "{{ update_result.msg }}"
 
   - name: Sprawdzam czy potrzebny jest restart systemu po aktualizacjach
     win_reboot:

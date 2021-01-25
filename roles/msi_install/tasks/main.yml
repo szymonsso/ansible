@@ -15,6 +15,6 @@
 - name: "Uruchomienie instalatora"
   win_package:
     path: c:\Users\winuser\Desktop\7zip.msi
-    state: present # dla deinstalacji parametr: absent
+    state: present
 
 
