@@ -4,3 +4,4 @@ secret
 pass.yml
 vault
 MapDrive.yml
+ansible.cfg
