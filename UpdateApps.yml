@@ -1,8 +1,9 @@
 ---
-- hosts: windows
+- hosts: dell6420
+  gather_facts: no
   tasks:
   - name: Aktualizacja zainstalowanego oprogramowania
-      win_chocolatey:
-        name: all
-        state: latest
+    win_chocolatey:
+      name: all
+      state: latest
 ...

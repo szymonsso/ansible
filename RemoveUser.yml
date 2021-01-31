@@ -1,8 +1,8 @@
 ---
-- hosts: all
+- hosts: laptopy
+  gather_facts: no
   roles:
-      - ping
-      - { role: remove_user, user_name: test3 }
-      - { role: remove_user, user_name: test }
+#      - ping
+      - { role: remove_user, user_name: uzytkownik1 }
 
 ...

@@ -1,5 +1,6 @@
 ---
-- hosts: host1
+- hosts: dell6420
+  gather_facts: no
   tasks:
   - name: Powiadomienie dla zalogowanych użytkowników o restarcie
     win_msg:

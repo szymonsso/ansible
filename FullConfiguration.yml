@@ -1,8 +1,9 @@
 ---
-- hosts: host1
+- hosts: dell
+  gather_facts: no
   roles:
-      - ping
-      - { role: create_user, user_name: test3, user_fullname: "Test 3" }
+   #   - ping
+      - { role: create_user, user_name: uzytkownik1, user_fullname: "Użytkownik1" }
       - { role: choco_install, software: notepadplusplus}
       - { role: choco_install, software: openvpn }
       - { role: choco_install, software: adobereader }
@@ -11,5 +12,6 @@
       - add_wifi
       - win_update
 - import_playbook: tightvnc.yml
+- import_playbook: RegEdit.yml
 ...
 

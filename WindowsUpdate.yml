@@ -1,15 +1,15 @@
 ---
-- hosts: laptopy
+- hosts: dell6420
 #  gather_facts: yes
 #(jeśli chcemy aby aktualizacje działy się na każdym hoście po kolei opcja serial musi być aktywna z parametrem 1)
 #  serial: 1
   tasks:
-
   - name: Instalacja kluczowych aktualizacji windows
     win_updates:
       category_names:
         - CriticalUpdates
         - SecurityUpdates
+      state: installed
     register: update_result
   - name: Sprawdzam czy potrzebny jest restart systemu po aktualizacjach
     win_reboot:

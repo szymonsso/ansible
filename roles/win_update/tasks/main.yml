@@ -17,5 +17,5 @@
   always:
     - name: Wynik aktualizacji systemu
       debug:
-        var: update_result.msg
+        var: update_result
 ...

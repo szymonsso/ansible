@@ -1,5 +1,5 @@
 ---
-- hosts: host1
+- hosts: dell6420 wirtualne 
   tasks:
   - name: Usuwanie oprogramowania przez chocolatey
     win_chocolatey:
