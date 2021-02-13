@@ -1,0 +1,1 @@
+Get-BitLockerVolume | Enable-BitLocker -EncryptionMethod XtsAes256 -RecoveryPasswordProtector -UsedSpaceOnly -SkipHardwareTest
