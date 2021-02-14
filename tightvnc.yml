@@ -1,6 +1,6 @@
 ---
 #parametry pobrane z https://www.tightvnc.com/doc/win/TightVNC_2.7_for_Windows_Installing_from_MSI_Packages.pdf
-- hosts: host1
+- hosts: dell6420
   tasks:
   - name: Instalacja i konfiguracja TightVNC
     win_chocolatey: 

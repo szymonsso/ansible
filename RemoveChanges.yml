@@ -15,6 +15,12 @@
     - name: Usuwam profil WiFi InternetBezprzewodowy
       win_command: 'netsh wlan delete profile name="WirelessProfileName"'
       ignore_errors: yes
+
+    - name: wyłączam BitLocker
+      win_shell: 'Disable-BitLocker -MountPoint "C:"'
+      register: output
+    - debug: var=output.stdout_lines
+    
     - name: '"Ten komputer" domyślnie po otworzeniu eksploratora plików'
       win_regedit:
         path: HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced

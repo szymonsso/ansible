@@ -1,5 +1,5 @@
 ---
-- hosts: host1
+- hosts: dell6420
   tasks:
 
   - name: '"Ten komputer" domyślnie po otworzeniu eksploratora plików'
@@ -9,6 +9,7 @@
       data: 1 #1 dla Ten Komputer, a 2 dla Szybki Dostęp
       type: dword
       state: present
+    ignore_errors: yes
 
   - name: Wyłączenie Cortany z paska zadań
     win_regedit:
@@ -17,6 +18,7 @@
       data: 0 #0 dla wyłączenia, 1 dla włączenia Cortany
       type: dword
       state: present
+    ignore_errors: yes
 
   # - name: Wyłącz automatyczne aktualizacje Windows
   #   win_regedit:
@@ -33,4 +35,5 @@
       data: 1
       type: dword
       state: present
+    ignore_errors: yes
 ...
