@@ -1,9 +1,9 @@
 ---
-- hosts: dell
-  gather_facts: no
+- hosts: dell6420
   roles:
    #   - ping
       - { role: create_user, user_name: uzytkownik1, user_fullname: "Użytkownik1" }
+      - bitlocker
       - { role: choco_install, software: notepadplusplus}
       - { role: choco_install, software: openvpn }
       - { role: choco_install, software: adobereader }
@@ -13,5 +13,7 @@
       - win_update
 - import_playbook: tightvnc.yml
 - import_playbook: RegEdit.yml
-...
+- import_playbook: bitlocker_check.yml
 
+
+...

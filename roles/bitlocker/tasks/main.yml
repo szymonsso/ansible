@@ -35,4 +35,6 @@
       win_shell: 'manage-bde -status'
       register: output
     - debug: var=output.stdout_lines
+
+
 ...
