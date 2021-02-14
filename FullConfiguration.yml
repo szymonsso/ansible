@@ -1,9 +1,9 @@
 ---
-- hosts: dell6420
+- hosts: host1
   roles:
       - ping
-      - { role: create_user, user_name: uzytkownik1, user_fullname: "Użytkownik1" }
-      - bitlocker
+      - bitlocker      
+      - { role: create_user, user_name: uzytkownik, user_fullname: "Użytkownik 1" }
       - { role: choco_install, software: notepadplusplus}
       - { role: choco_install, software: openvpn }
       - { role: choco_install, software: adobereader }
