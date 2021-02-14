@@ -2,21 +2,16 @@
 - name: Sprawdzam czy moduł TPM jest włączony
   win_shell: Get-Tpm | Select-Object -ExpandProperty Tpmready
   register: tpmstatus
+  
 - name: Przekazuję stan TPM do reszty bloku
   set_fact: tmp={{tpmstatus.stdout}}
   
 - block:
-  - name: Kopiuję skrypt bitlocker.ps1 na dysk 
-    win_copy:
-      src: bitlocker.ps1
-      dest: C:\Users\winuser\Desktop\bitlocker.ps1
-
-  - name: szyfruję dysk ze skryptu
-    win_shell: C:\Users\winuser\Desktop\bitlocker.ps1
+  - name: Rozpoczynam szyfrowanie dysku BitLockerem
+    win_shell: 'Enable-BitLocker -MountPoint "C:" -EncryptionMethod XtsAes256 -RecoveryPasswordProtector -UsedSpaceOnly -SkipHardwareTest'
 
   - name: Odczytuję klucz odzyskiwania ---- szyfrowanie nadal trwa
     win_shell: (Get-BitLockerVolume -MountPoint C).KeyProtector
-    # win_shell: 'manage-bde -protectors -get C:'
     register: RecoveryKey
 
   - name: Zapisuję klucz odzyskiwania do pliku /home/bitlocker/{{ansible_hostname}}   
@@ -24,12 +19,8 @@
       module: copy 
       content: "{{ RecoveryKey.stdout_lines }}"
       dest: /home/szymon/{{ ansible_hostname }}
-
-  - name: Usuwam skrypy bitlocker.ps1 z systemu
-    win_file:
-      path: C:\Users\winuser\Desktop\bitlocker.ps1
-      state: absent
   when: tmp == "True\r\n"
+
   always:      
     - name: Odczytuję status szyfrowania
       win_shell: 'manage-bde -status'
