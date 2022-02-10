@@ -9,3 +9,14 @@
     section: System Access
     key: MinimumPasswordLength
     value: 5
+
+
+    # Possible keys:
+    # [System Access]
+    # MinimumPasswordAge = 0
+    # MaximumPasswordAge = 42
+    # MinimumPasswordLength = 5
+    # PasswordComplexity = 0
+    # PasswordHistorySize = 0
+    # LockoutBadCount = 0
+    # RequireLogonToChangePassword = 0

@@ -4,6 +4,7 @@ azure
 wirtualne
 
 [laptopy]
+szymi
 lenovo ansible_host=192.168.8.100
 dell ansible_host=192.168.8.117
 dell6420 ansible_host=192.168.8.116

@@ -1,17 +1,18 @@
 ---
-- hosts: host1
+- hosts: lenovo
   roles:
       - ping
-      - bitlocker      
-      - { role: create_user, user_name: uzytkownik, user_fullname: "Użytkownik 1" }
-      - { role: choco_install, software: notepadplusplus}
-      - { role: choco_install, software: openvpn }
-      - { role: choco_install, software: adobereader }
-      - { role: choco_install, software: windirstat }
-      - { role: choco_install, software: firefox }
-      - add_wifi
-      - win_update
-- import_playbook: tightvnc.yml
-- import_playbook: RegEdit.yml
-- import_playbook: bitlocker_check.yml
+      - pass_policy
+#       - bitlocker      
+#       - { role: create_user, user_name: uzytkownik, user_fullname: "Użytkownik 1" }
+#       - { role: choco_install, software: notepadplusplus}
+#       - { role: choco_install, software: openvpn }
+#       - { role: choco_install, software: adobereader }
+#       - { role: choco_install, software: windirstat }
+#       - { role: choco_install, software: firefox }
+#       - add_wifi
+#       - win_update
+# - import_playbook: tightvnc.yml
+# - import_playbook: RegEdit.yml
+# - import_playbook: bitlocker_check.yml
 ...
