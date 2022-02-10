@@ -1,0 +1,11 @@
+- name: Turn on password complexity
+  community.windows.win_security_policy:
+    section: System Access
+    key: PasswordComplexity 
+    value: 0  #0 for disabled, 1 for enabled
+
+- name: Set the minimum password length
+  community.windows.win_security_policy:
+    section: System Access
+    key: MinimumPasswordLength
+    value: 5
